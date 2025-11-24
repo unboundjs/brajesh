@@ -5,24 +5,24 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brajesh Kumar | The Mysterious Vault</title>
+  <title>Brajesh Yadav | The Mysterious Vault</title>
   <meta name="description"
-    content="Step into the Mysterious Vault. The official portfolio of Brajesh Kumar - Audiobook Creator, Storyteller, and Adventurer." />
+    content="Step into the Mysterious Vault. The official portfolio of Brajesh Yadav - Audiobook Creator, Storyteller, and Adventurer." />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nikharabrief.vercel.app/" />
-  <meta property="og:title" content="Brajesh Kumar | The Mysterious Vault" />
+  <meta property="og:title" content="Brajesh Yadav | The Mysterious Vault" />
   <meta property="og:description"
-    content="Step into the Mysterious Vault. The official portfolio of Brajesh Kumar - Audiobook Creator, Storyteller, and Adventurer." />
+    content="Step into the Mysterious Vault. The official portfolio of Brajesh Yadav - Audiobook Creator, Storyteller, and Adventurer." />
   <meta property="og:image" content="/khali_locker.png" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://nikharabrief.vercel.app/" />
-  <meta property="twitter:title" content="Brajesh Kumar | The Mysterious Vault" />
+  <meta property="twitter:title" content="Brajesh Yadav | The Mysterious Vault" />
   <meta property="twitter:description"
-    content="Step into the Mysterious Vault. The official portfolio of Brajesh Kumar - Audiobook Creator, Storyteller, and Adventurer." />
+    content="Step into the Mysterious Vault. The official portfolio of Brajesh Yadav - Audiobook Creator, Storyteller, and Adventurer." />
   <meta property="twitter:image" content="/khali_locker.png" />
 
   <!-- Google Fonts -->
@@ -35,32 +35,46 @@
 
 <body>
   <div class="noise-overlay"></div>
-  <div class="cursor-dot"></div>
-  <div class="cursor-outline"></div>
 
   <div id="app">
     <!-- Navigation -->
     <nav class="navbar">
-      <div class="logo">Mysterious Vault</div>
+      <div class="logo">Brajesh Yadav</div>
       <div class="nav-links">
         <a href="#home" class="nav-link">Home</a>
         <a href="#audiobooks" class="nav-link">Works</a>
-        <a href="#interests" class="nav-link">Passions</a>
-        <a href="#contact" class="nav-link">Connect</a>
+        <a href="#hobbies" class="nav-link">Hobbies</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </div>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </nav>
+
+    <!-- Mobile Menu Backdrop -->
+    <div class="mobile-menu-backdrop"></div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-      <div class="hero-bg-parallax"></div>
-      <div class="hero-content" data-speed="0.5">
+      <div class="hero-parallax-container">
+        <!-- Layer 1: Sky -->
+        <div class="parallax-layer layer-1" data-speed="0.02"></div>
+        <!-- Layer 2: Mid-ground (Mountains) -->
+        <div class="parallax-layer layer-2" data-speed="0.05"></div>
+        <!-- Layer 3: Foreground (Trees) -->
+        <div class="parallax-layer layer-3" data-speed="0.1"></div>
+      </div>
+
+      <div class="hero-content">
         <p class="subtitle fade-in-up">Enter the Unknown</p>
-        <h1 class="glitch fade-in-up delay-1" data-text="Brajesh Kumar">Brajesh Kumar</h1>
+        <h1 class="glitch fade-in-up delay-1" data-text="Brajesh Yadav">Brajesh Yadav</h1>
         <p class="tagline fade-in-up delay-2">Curator of the <span class="highlight">Mysterious Vault</span></p>
         <div class="cta-group fade-in-up delay-3">
-          <a href="#audiobooks" class="btn btn-primary">Explore the Vault</a>
-          <a href="https://www.youtube.com/@BrajeshYadav-b8n" target="_blank" class="btn btn-secondary">Watch on
-            YouTube</a>
+          <a href="#audiobooks" class="btn btn-primary">Enter the Vault</a>
+          <a href="https://www.youtube.com/@BrajeshYadav-b8n" target="_blank" class="btn btn-secondary">YouTube
+            Channel</a>
         </div>
       </div>
     </section>
@@ -95,11 +109,14 @@
           </div>
         </div>
       </div>
+      <div class="center-btn fade-in-section delay-2" style="text-align: center; margin-top: 4rem;">
+        <a href="/audiobooks.html" class="btn btn-secondary">View All Audiobooks</a>
+      </div>
     </section>
 
-    <!-- Interests Section -->
-    <section id="interests" class="section dark-alt">
-      <h2 class="section-title fade-in-section">Beyond the Mic</h2>
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="section dark-alt">
+      <h2 class="section-title fade-in-section">Hobbies & Passions</h2>
       <div class="interests-grid">
         <div class="interest-item fade-in-section">
           <div class="icon">🏔️</div>
@@ -122,7 +139,7 @@
     <!-- Contact/Footer -->
     <section id="contact" class="footer">
       <div class="footer-content fade-in-section">
-        <h2>Join the Community</h2>
+        <h2>Connect with Brajesh</h2>
         <div class="social-links">
           <a href="https://www.youtube.com/@BrajeshYadav-b8n" target="_blank" class="social-btn youtube">
             <span>YouTube</span>
@@ -131,7 +148,7 @@
             <span>Instagram</span>
           </a>
         </div>
-        <p class="copyright">&copy; 2024 Brajesh Kumar. All rights reserved.</p>
+        <p class="copyright">&copy; 2024 Brajesh Yadav. All rights reserved.</p>
       </div>
     </section>
   </div>

@@ -1,51 +1,54 @@
 import './style.css'
 
-// Custom Cursor
-const cursorDot = document.querySelector('.cursor-dot');
-const cursorOutline = document.querySelector('.cursor-outline');
+// Multi-Layer Parallax Effect for Hero
+const hero = document.querySelector('.hero');
+const layers = document.querySelectorAll('.parallax-layer');
 
-window.addEventListener('mousemove', (e) => {
-  const posX = e.clientX;
-  const posY = e.clientY;
+// Multi-Layer Parallax Effect for Hero with Smooth Lerp
+if (hero && layers.length > 0) {
+  let mouseX = 0;
+  let mouseY = 0;
+  let currentX = 0;
+  let currentY = 0;
 
-  // Dot follows immediately
-  cursorDot.style.left = `${posX}px`;
-  cursorDot.style.top = `${posY}px`;
+  // Lerp function for smooth interpolation
+  const lerp = (start, end, factor) => start + (end - start) * factor;
 
-  // Outline follows with delay (using animate for smoother performance)
-  cursorOutline.animate({
-    left: `${posX}px`,
-    top: `${posY}px`
-  }, { duration: 500, fill: "forwards" });
-});
-
-// Hover effect for cursor
-document.querySelectorAll('a, button, .book-card, .interest-item').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursorOutline.style.width = '50px';
-    cursorOutline.style.height = '50px';
-    cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+  hero.addEventListener('mousemove', (e) => {
+    // Normalize mouse position (-1 to 1)
+    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    mouseY = (e.clientY / window.innerHeight) * 2 - 1;
   });
-  el.addEventListener('mouseleave', () => {
-    cursorOutline.style.width = '30px';
-    cursorOutline.style.height = '30px';
-    cursorOutline.style.backgroundColor = 'transparent';
+
+  const animateParallax = () => {
+    // Increased lerp factor from 0.05 to 0.1 for faster response
+    currentX = lerp(currentX, mouseX, 0.1);
+    currentY = lerp(currentY, mouseY, 0.1);
+
+    layers.forEach((layer) => {
+      // Get speed from data-speed attribute or default
+      const dataSpeed = parseFloat(layer.getAttribute('data-speed')) || 0.02;
+      // Increased speed multiplier from 500 to 800 for more dramatic movement
+      const speed = dataSpeed * 800;
+
+      const xOffset = currentX * speed;
+      const yOffset = currentY * speed;
+
+      layer.style.transform = `translate3d(${-xOffset}px, ${-yOffset}px, 0)`;
+    });
+
+    requestAnimationFrame(animateParallax);
+  };
+
+  animateParallax();
+
+  // Reset on mouse leave (optional, but smooth return is nice)
+  hero.addEventListener('mouseleave', () => {
+    mouseX = 0;
+    mouseY = 0;
   });
-});
+}
 
-// Parallax Effect for Hero
-const heroContent = document.querySelector('.hero-content');
-const heroBg = document.querySelector('.hero-bg-parallax');
-
-document.addEventListener('mousemove', (e) => {
-  if (window.scrollY > window.innerHeight) return; // Only active in hero
-
-  const x = (window.innerWidth - e.pageX * 2) / 100;
-  const y = (window.innerHeight - e.pageY * 2) / 100;
-
-  heroContent.style.transform = `translate(${x * 2}px, ${y * 2}px)`;
-  heroBg.style.transform = `translate(${x}px, ${y}px) scale(1.1)`;
-});
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -89,3 +92,34 @@ if (glitchText) {
     }, 200);
   }, 4000);
 }
+
+// Mobile Menu Toggle
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
+const mobileBackdrop = document.querySelector('.mobile-menu-backdrop');
+
+if (mobileMenuBtn && navLinks && mobileBackdrop) {
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    navLinks.classList.toggle('mobile-active');
+    mobileBackdrop.classList.toggle('active');
+  });
+
+  // Close menu when clicking backdrop
+  mobileBackdrop.addEventListener('click', () => {
+    mobileMenuBtn.classList.remove('active');
+    navLinks.classList.remove('mobile-active');
+    mobileBackdrop.classList.remove('active');
+  });
+
+  // Close menu when clicking on a link
+  const navLinkItems = navLinks.querySelectorAll('.nav-link');
+  navLinkItems.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenuBtn.classList.remove('active');
+      navLinks.classList.remove('mobile-active');
+      mobileBackdrop.classList.remove('active');
+    });
+  });
+}
+
