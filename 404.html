@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 | Lost in the Void</title>
+    <meta name="description" content="Page not found. You have ventured too deep into the mysterious vault." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+    <div class="noise-overlay"></div>
+
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">Brajesh Yadav</div>
+            <div class="nav-links">
+                <a href="/index.html" class="nav-link">Home</a>
+                <a href="/index.html#audiobooks" class="nav-link">Works</a>
+                <a href="/index.html#hobbies" class="nav-link">Hobbies</a>
+                <a href="/index.html#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Backdrop -->
+        <div class="mobile-menu-backdrop"></div>
+
+        <!-- 404 Content -->
+        <section class="hero" style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+            <div class="hero-content">
+                <h1 class="glitch fade-in-up" data-text="404"
+                    style="font-size: clamp(6rem, 15vw, 12rem); margin-bottom: 0;">404</h1>
+                <p class="subtitle fade-in-up delay-1"
+                    style="color: var(--accent-gold); letter-spacing: 4px; margin-top: 1rem;">Lost in the Void</p>
+                <p class="tagline fade-in-up delay-2" style="max-width: 600px; margin: 2rem auto;">
+                    You've ventured too far into the unknown. The page you are looking for has vanished into the
+                    shadows.
+                </p>
+                <div class="cta-group fade-in-up delay-3">
+                    <a href="/index.html" class="btn btn-primary">Return to Safety</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer">
+            <div class="footer-content fade-in-section">
+                <div class="footer-top">
+                    <div class="footer-left">
+                        <h2>Connect with Brajesh</h2>
+                        <div class="social-links">
+                            <a href="https://www.youtube.com/@BrajeshYadav-b8n" target="_blank"
+                                class="social-btn youtube">
+                                <span>YouTube</span>
+                            </a>
+                            <ahref="https: //www.instagram.com/yadvv.___0" target="_blank" class="social-btn instagram">
+                                <span>Instagram</span>
+                                </a>
+                        </div>
+                    </div>
+                    <div class="footer-right">
+                        <p class="tagline">Discover. Listen. Immerse.</p>
+                        <p class="crafted-by">Crafted with ❤️ by Ayudha Studios</p>
+                    </div>
+                </div>
+                <p class="copyright">&copy; 2026 Brajesh Yadav. All rights reserved.</p>
+            </div>
+        </section>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

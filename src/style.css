@@ -489,6 +489,7 @@ a {
   text-transform: uppercase;
   letter-spacing: -1px;
   opacity: 0.9;
+  line-height: 1.2;
 }
 
 /* Audiobooks */
@@ -606,14 +607,16 @@ a {
 }
 
 .interest-item {
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.02);
   padding: 3rem 2rem;
   text-align: left;
-  border: 1px solid var(--card-border);
-  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
   border-radius: 4px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .interest-item::before {
@@ -623,14 +626,15 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03));
+  background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.03));
   opacity: 0;
   transition: var(--transition);
 }
 
 .interest-item:hover {
   border-color: var(--accent-gold);
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .interest-item:hover::before {
@@ -638,29 +642,33 @@ a {
 }
 
 .icon {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 2rem;
   filter: grayscale(100%);
-  transition: var(--transition);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
 }
 
 .interest-item:hover .icon {
   filter: grayscale(0%);
+  transform: scale(1.2);
 }
 
 .interest-item h3 {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
   color: var(--text-main);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  font-weight: 700;
 }
 
 .interest-item p {
   color: var(--text-muted);
   font-weight: 300;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 /* Footer */
@@ -674,33 +682,147 @@ a {
 .footer h2 {
   font-family: var(--font-heading);
   font-size: 1.8rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  text-align: left;
+  flex: 1;
+  min-width: 280px;
+}
+
+.footer-right {
+  text-align: right;
+  flex: 1;
+  min-width: 280px;
+}
+
+.tagline {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--accent-gold);
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.crafted-by {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 300;
 }
 
 .social-links {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 0;
   flex-wrap: wrap;
 }
 
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    text-align: center;
+    width: 100%;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}
+
 .social-btn {
+  position: relative;
   padding: 1rem 2.5rem;
-  border: 1px solid var(--card-border);
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 0.8rem;
-  transition: var(--transition);
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  transition: color 0.3s;
+  border-radius: 4px;
+  border: none;
+  z-index: 1;
+}
+
+.social-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+/* The rotating gradient background */
+.social-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  /* Ensure it covers the button during rotation */
+  height: 500%;
+  /* Aspect ratio handling */
+  background: conic-gradient(transparent, transparent, transparent, var(--btn-color));
+  transform: translate(-50%, -50%);
+  animation: rotate 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 0;
+}
+
+/* The inner background to create the border effect */
+.social-btn::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  /* Border width */
+  background: #000;
+  border-radius: 2px;
+  z-index: 0;
 }
 
 .social-btn:hover {
-  border-color: var(--text-main);
-  color: var(--text-main);
-  background: rgba(255, 255, 255, 0.02);
+  color: var(--btn-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.social-btn:hover::before {
+  opacity: 1;
+}
+
+/* Brand Colors */
+.social-btn.youtube {
+  --btn-color: #FF0000;
+}
+
+.social-btn.instagram {
+  --btn-color: #C13584;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .hero-content {
